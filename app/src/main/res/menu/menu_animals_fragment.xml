@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="@string/filter_item"
+    android:icon="@drawable/ic_baseline_filter_alt_24"
+    android:id="@+id/action_sort"
+    app:showAsAction="always">
+
+    <menu>
+        <item
+            android:id="@+id/action_sort_by_name"
+            android:title="@string/sort_by_name"/>
+        <item
+            android:id="@+id/action_sort_by_age"
+            android:title="@string/sort_by_age"/>
+        <item
+            android:id="@+id/action_sort_by_nickname"
+            android:title="@string/sort_by_nickname"/>
+    </menu>
+</item>
+</menu>

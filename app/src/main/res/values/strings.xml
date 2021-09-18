@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidSchool4Task</string>
+    <string name="filter_item">Filter</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_age">Sort by age</string>
+    <string name="sort_by_nickname">Sort by nickname</string>
+</resources>
