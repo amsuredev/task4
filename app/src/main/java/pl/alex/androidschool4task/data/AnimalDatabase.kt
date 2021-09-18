@@ -21,10 +21,6 @@ abstract class AnimalDatabase : RoomDatabase() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             val dao = database.get().animalDao()
-            applicationScope.launch {
-                dao.insert(Animal("cat", 4, "Vasilisa"))
-                dao.insert(Animal("cat", 22, "Tatsiana"))
-            }
         }
     }
 }

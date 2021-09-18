@@ -2,37 +2,38 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.add_edit_animal.AddEdditAnimalFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
 
         <EditText
             android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="name" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/textViewAge"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="age"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            />
 
         <EditText
-            android:id="@+id/textviewSex"
-            android:layout_width="wrap_content"
+            android:id="@+id/textviewNickname"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="nickname" />
+            android:inputType="text" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_save_task"
+        android:id="@+id/fab_save_animal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

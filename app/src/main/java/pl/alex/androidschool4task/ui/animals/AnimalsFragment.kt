@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,6 +46,10 @@ class AnimalsFragment : Fragment(R.layout.fragment_animals), AnimalAdapter.OnAni
                 }
 
             }).attachToRecyclerView(recyclerViewAnimals)
+
+            fabAddTask.setOnClickListener {
+                viewModel.onAddTaskClick()
+            }
         }
         viewModel.animals.observe(viewLifecycleOwner) {
             animalAdapter.submitList(it)
@@ -57,6 +62,14 @@ class AnimalsFragment : Fragment(R.layout.fragment_animals), AnimalAdapter.OnAni
                         Snackbar.make(requireView(), "Animal deleted", Snackbar.LENGTH_LONG).setAction("UNDO"){
                             viewModel.undoDeleteClick(event.animal)
                         }.show()
+                    }
+                    is AnimalEvent.NavigateToEdditTaskScreen -> {
+                        val action = AnimalsFragmentDirections.actionAnimalsFragmentToAddEdditTaskFragment(event.animal, "Edit animal")
+                        findNavController().navigate(action)
+                    }
+                    is AnimalEvent.NavigateToAddAnimalScreen -> {
+                        val action = AnimalsFragmentDirections.actionAnimalsFragmentToAddEdditTaskFragment(null, "New animal")
+                        findNavController().navigate(action)
                     }
                 }
             }

@@ -3,6 +3,7 @@ package pl.alex.androidschool4task.ui.animals
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -39,7 +40,7 @@ class AnimalAdapter(private val listener: OnAnimalClickListener) : ListAdapter<A
             binding.apply {
                 binding.textviewAge.text = animal.age.toString()
                 binding.textviewName.text = animal.name
-                binding.textviewSex.text = animal.nickName
+                binding.textviewNickname.text = animal.nickName
             }
         }
     }
