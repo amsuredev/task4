@@ -13,7 +13,7 @@ interface AnimalDao {
     suspend fun update(animal: Animal)
 
     @Delete
-    suspend fun delete(anima: Animal)
+    suspend fun delete(animal: Animal)
 
     fun getAnimals(sortOrder: SortOrder): Flow<List<Animal>>{
         return when (sortOrder){

@@ -2,13 +2,15 @@ package pl.alex.androidschool4task.ui.animals
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import pl.alex.androidschool4task.data.Animal
 import pl.alex.androidschool4task.databinding.ItemAnimalBinding
 
-class AnimalAdapter : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCallback()) {
+class AnimalAdapter(private val listener: OnAnimalClickListener) : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
         val binding = ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnimalViewHolder(binding)
@@ -19,8 +21,20 @@ class AnimalAdapter : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCa
         holder.bind(currentItem)
     }
 
-    class AnimalViewHolder(private val binding: ItemAnimalBinding) :
+    inner class AnimalViewHolder(private val binding: ItemAnimalBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.apply {
+                root.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION){
+                        val animal = getItem(position)
+                        listener.onItemClick(animal)
+                    }
+                }
+            }
+        }
+
         fun bind(animal: Animal) {
             binding.apply {
                 binding.textviewAge.text = animal.age.toString()
@@ -28,6 +42,10 @@ class AnimalAdapter : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCa
                 binding.textviewSex.text = animal.nickName
             }
         }
+    }
+
+    interface OnAnimalClickListener{
+        fun onItemClick(animal: Animal)
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Animal>(){
